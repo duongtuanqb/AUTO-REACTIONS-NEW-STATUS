@@ -2,9 +2,9 @@
 date_default_timezone_set("Asia/Ho_Chi_Minh");
 
 define('ENDPOINT', 'https://graph.fb.me/');
-define('ACCESS_TOKEN', 'YOUR_ACCESS_TOKEN');
-define('CRUSH_USER_ID', 'USER_ID');
-define('YOUR_USER_ID', 'USER_ID');
+define('ACCESS_TOKEN', 'YOUR_ACCESS_TOKEN'); // Thay YOUR_ACCESS_TOKEN thành Token của bạn
+define('CRUSH_USER_ID', 'USER_ID'); // Thay USER_ID thành ID của Cursh
+define('YOUR_USER_ID', 'USER_ID'); // Thay USER_ID thành ID của bạn
 
 $list_reaction = ['LIKE', 'LOVE', 'WOW', 'HAHA', 'SAD', 'ANGRY']; // List Reactions
 
