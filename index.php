@@ -3,34 +3,33 @@ date_default_timezone_set("Asia/Ho_Chi_Minh");
 
 define('ENDPOINT', 'https://graph.fb.me/');
 define('ACCESS_TOKEN', 'YOUR_ACCESS_TOKEN'); // Thay YOUR_ACCESS_TOKEN thành Token của bạn
-define('CRUSH_USER_ID', 'USER_ID'); // Thay USER_ID thành ID của Cursh
 define('YOUR_USER_ID', 'USER_ID'); // Thay USER_ID thành ID của bạn
 
 $list_reaction = ['LIKE', 'LOVE', 'WOW', 'HAHA', 'SAD', 'ANGRY']; // List Reactions
+$list_user = ['ID_1', 'ID_2']; // List User ID 
 
-$posts = curl(ENDPOINT.CRUSH_USER_ID.'/posts?fields=id&limit=1&access_token='.ACCESS_TOKEN); // Get list status
+foreach ($list_user as $userID) {
+	$posts = curl(ENDPOINT.$userID.'/posts?fields=id&limit=1&access_token='.ACCESS_TOKEN);
 
-$idFirstPost = $posts->data[0]->id; // Get first ID status
-
-if(!checkReaction($idFirstPost)) {
+	$idFirstPost = $posts->data[0]->id;
+	if(checkReaction($idFirstPost)) {
+		continue;
+	}
 
 	$reaction = $list_reaction[array_rand($list_reaction)];
 
-	$url = ENDPOINT.$idFirstPost.'/reactions?type='.$reaction.'&method=POST&access_token='.ACCESS_TOKEN;
-
-	$log = curl($url);
+	$log = curl(ENDPOINT.$idFirstPost.'/reactions?type='.$reaction.'&method=POST&access_token='.ACCESS_TOKEN);
 
 	if($log->success) {
 		logs(date('d.m.y H:i:s')." | ".$reaction." | ".$idFirstPost." | success\n");
 		echo 'success';
 	}
 	else {
-		logs(date('d.m.y H:i:s')." | ERROR | ".$idFirstPost." | ".$log->error-message."\n");
+		logs(date('d.m.y H:i:s')." | ERROR | ".$idFirstPost." | ".$log->error->message."\n");
 		echo 'error';
 	}
-} else {
-	echo 'REACTIONED';
 }
+
 
 function curl($url) {
 	$ch = curl_init();
@@ -62,22 +61,14 @@ function checkReaction($idPost) {
 
 			if(YOUR_USER_ID == $user->id) {
 				return true;
+				break;
 			}
-
 		}
-
 	}
-
 	return false;
 }
 
-// Logs file
 function logs($data) {
-	$fp = fopen('log.txt', "a");
-
-	if ($fp) {
-	    fwrite($fp, $data);
-	}
-
-	fclose($fp);
+	$fileContent = file_get_contents ('log.txt');
+	file_put_contents('log.txt', $data . "\n" . $fileContent);
 }
