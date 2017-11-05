@@ -6,8 +6,9 @@ Bạn đang crush một ai đó, và muốn là người đầu  tiên Reactions
 1. Sửa File `index.php` 
 ```
 define('ACCESS_TOKEN', 'YOUR_ACCESS_TOKEN'); // Token của nick bạn
-define('CRUSH_USER_ID', 'USER_ID'); // ID nick crush muốn auto
+$list_user = ['ID_1', 'ID_2']; // Thay ID_1, ID_2
 define('YOUR_USER_ID', 'USER_ID'); // ID nick bạn
+$list_reaction = ['LIKE', 'LOVE', 'WOW', 'HAHA', 'SAD', 'ANGRY']; // Có thể xoá các reaction không muốn.
 ```
 2. Up file PHP lên host của bạn.
 3. Tạo cronjob: `* * * * * curl url-file-php-vua-upload`
