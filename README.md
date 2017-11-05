@@ -1,4 +1,4 @@
-# AUTO-REACTIONS-NEW-STATUS
+# AUTO-REACTIONS-NEW-STATUS FOR ONE USER
 Tự động Reactions khi crush đăng status mới. 😏
 
 Bạn đang crush một ai đó, và muốn là người đầu  tiên Reactions (Cảm xúc)  tatus của crush bằng tốc độ ánh sáng ( crush vừa đăng status cái là mình Reactions liền 😎 ). Tool này sẽ giúp bạn làm điều đó =)))
