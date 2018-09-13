@@ -2,11 +2,11 @@
 date_default_timezone_set("Asia/Ho_Chi_Minh");
 
 define('ENDPOINT', 'https://graph.fb.me/');
-define('ACCESS_TOKEN', 'YOUR_ACCESS_TOKEN'); // Thay YOUR_ACCESS_TOKEN thành Token của bạn
-define('YOUR_USER_ID', 'USER_ID'); // Thay USER_ID thành ID của bạn
+define('ACCESS_TOKEN', 'EAAAAAYsX7TsBAPkdNcCFC1SPxTjHq5XpEKwmMjgVioxcZAZBxePxqzkwJ0pP1vr3sDN2M1HoAmH5FFImKZCB4wCkglks3HABA1THj6PjbmduWFIQMbfSZClNWKvmNZAuWcNCBcKafuqfFX88JAbxHpIXjOqmgZCyCLghOubAXmbq8b86GfkrieWEpR2ZB9IggLflcLY5xmp7AcfadgoAZAYY'); // Thay YOUR_ACCESS_TOKEN thành Token của bạn
+define('YOUR_USER_ID', '100012707970558'); // Thay USER_ID thành ID của bạn
 
-$list_reaction = ['LIKE', 'LOVE', 'WOW', 'HAHA', 'SAD', 'ANGRY']; // List Reactions
-$list_user = ['ID_1', 'ID_2']; // List User ID 
+$list_reaction = ['LIKE']; // List Reactions
+$list_user = ['100027399409598']; // List User ID 
 
 foreach ($list_user as $userID) {
 	$posts = curl(ENDPOINT.$userID.'/posts?fields=id&limit=1&access_token='.ACCESS_TOKEN);
